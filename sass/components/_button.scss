@@ -1,5 +1,6 @@
-.btn:link,
-.btn:visited {
+.btn{
+    &:link,
+    &:visited {
     text-decoration: none;
     padding: 15px 40px;
     display: inline-block; 
@@ -8,51 +9,60 @@
     position: relative;
     text-transform: uppercase;
     font-size: $default-font-size;
-}
+    }
 
-.btn:hover{
-    transform: translateY(-3px);
-    box-shadow: 10px 10px 20px rgba(0,0,0,.2);  
-}
+    &:hover{
+        transform: translateY(-3px);
+        box-shadow: 10px 10px 20px rgba(0,0,0,.2);
+        
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
 
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 10px 5px 10px rgba(0,0,0,.2);
+    
+    }
 
-.btn:active{
-    transform: translateY(-1px);
-    box-shadow: 10px 5px 10px rgba(0,0,0,.2);
+    &-white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+    
+        &::after{
+            background-color: $color-white;
+        }
+    }
 
-}
+    &-green {
+        background-color: $color-primary;
+        color: $color-white;
+    
+        &::after{
+            background-color: $color-primary;
+        }
+    }
 
-.btn-white {
-    background-color: $color-white;
-    color: $color-grey-dark;
-}
+    &::after{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        position: absolute; 
+        border-radius: 100px;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
 
-.btn-white::after{
-    background-color: $color-white;
-}
-
-
-.btn::after{
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    position: absolute; 
-    border-radius: 100px;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
-
-.btn-animation{
-    animation: moveInBottom .5s ease-out 0.75s;
-    animation-fill-mode: backwards; 
-    /* doubt */
+    &-animation{
+        animation: moveInBottom .5s ease-out 0.75s;
+        animation-fill-mode: backwards; 
+        /* doubt */
+    }
 }
 
 .btn-text{
